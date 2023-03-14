@@ -20,15 +20,15 @@ import Card from "@mui/material/Card";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-// Billing page components
-import Bill from "layouts/billing/components/Bill";
+// Resources page components
+import Bill from "layouts/resources/components/Bill";
 
 function BillingInformation() {
   return (
     <Card id="delete-account">
       <MDBox pt={3} px={2}>
         <MDTypography variant="h6" fontWeight="medium">
-          Billing Information
+          Resources Information
         </MDTypography>
       </MDBox>
       <MDBox pt={1} pb={2} px={2}>

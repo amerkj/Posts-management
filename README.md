@@ -143,7 +143,7 @@ material-dashboard-react
     │   │   └── Timeline
     │   ├── layouts
     │   │   ├── authentication
-    │   │   ├── billing
+    │   │   ├── resources
     │   │   ├── dashboard
     │   │   ├── notifications
     │   │   ├── profile
