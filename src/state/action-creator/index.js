@@ -1,4 +1,4 @@
-import { fetchPosts } from "api"
+import { fetchPosts ,deletePost, createPost, editPost} from "api"
 
 export const fetchPostsAction = ({ page, limit }) => {
   return (dispatch) => {
@@ -11,11 +11,53 @@ export const fetchPostsAction = ({ page, limit }) => {
   };
 };
 
-export const withdrowMoney=(amount)=>{
+export const deletePostAction=({id})=>{
     return (dispatch)=>{
+      deletePost(id).then((res)=>{
         dispatch({
-            type:'withdrow',
-            payload:amount,
-        })
+          type: "deletPost",
+          payload: {id},
+        });
+      })
     }
 }
+
+export const createPostAction=(payload) => {
+  return (dispatch)=>{
+    createPost(payload).then((res)=>{
+      dispatch({
+        type: "createPost",
+        payload: res.data,
+      });
+    })
+  }
+}
+
+
+export const setEditPost = ({id}) => {
+  return (dispatch)=>{
+      dispatch({
+        type: "setEditPost",
+        payload: {id},
+      });
+  }
+}
+
+export const editPostAction = (payload) => {
+  return (dispatch)=>{
+    editPost(payload).then((res)=>{
+      dispatch({
+        type: "editPost",
+        payload: res.data,
+      });
+    })
+  }
+}
+
+export const cancelEditing = () => {
+  return (dispatch)=>{
+    dispatch({
+      type: "setEditPost",
+      payload: {id: -1},
+    });
+}}

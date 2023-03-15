@@ -14,11 +14,13 @@ import MDTypography from "components/MDTypography";
 import Resource from "layouts/resources/components/Resource";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
+
 const PAGE_LIMIT = 5
+
 function BillingInformation() {
   const {resources, page} = useSelector((state)=>state.resource)
   const dispatch= useDispatch()
-  const {fetchPostsAction,withdrowMoney}=bindActionCreators(actionCreator,dispatch)
+  const {fetchPostsAction,deletePostAction, setEditPost}=bindActionCreators(actionCreator,dispatch)
 
   useEffect(() => {
     fetchPostsAction({ page: 1, limit: PAGE_LIMIT });
@@ -27,15 +29,31 @@ function BillingInformation() {
   return (
     <Card id="delete-account">
       <MDBox pt={3} px={2}>
-        <Box display="flex" justifyContent="space-between" >
+        <Box display="flex" justifyContent="space-between">
           <MDTypography variant="h6" fontWeight="medium">
             Resources Information
           </MDTypography>
           <Box display="flex">
-            <Button variant="text" disabled={page<=1} color="black" onClick={()=>{fetchPostsAction({ page: page-1, limit: PAGE_LIMIT });}}>Back</Button>
+            <Button
+              variant="text"
+              disabled={page <= 1}
+              color="black"
+              onClick={() => {
+                fetchPostsAction({ page: page - 1, limit: PAGE_LIMIT });
+              }}
+            >
+              Back
+            </Button>
             <span>{page}</span>
-            <Button variant="text" color="black" onClick={()=>{fetchPostsAction({ page: page+1, limit: PAGE_LIMIT });}} >Next</Button>
-
+            <Button
+              variant="text"
+              color="black"
+              onClick={() => {
+                fetchPostsAction({ page: page + 1, limit: PAGE_LIMIT });
+              }}
+            >
+              Next
+            </Button>
           </Box>
         </Box>
       </MDBox>
@@ -43,6 +61,8 @@ function BillingInformation() {
         <MDBox component="ul" display="flex" flexDirection="column" p={0} m={0}>
           {resources.map((post) => (
             <Resource
+              onDelete={() => deletePostAction({id: post.id})}
+              onEdit={()=>setEditPost({id: post.id})}
               key={post.id}
               title={post.title}
               body={post.body}

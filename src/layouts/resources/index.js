@@ -10,6 +10,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
 // Resources page components
 import BillingInformation from "layouts/resources/components/BillingInformation";
+import PostForm from "./components/PostForm";
 
 function Resources() {
   return (
@@ -20,6 +21,9 @@ function Resources() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={7}>
               <BillingInformation />
+            </Grid>
+            <Grid item xs={6} md={5}>
+              <PostForm />
             </Grid>
           </Grid>
         </MDBox>

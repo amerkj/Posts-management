@@ -12,7 +12,7 @@ import MDButton from "components/MDButton";
 // Material Dashboard 2 React context
 import { useMaterialUIController } from "context";
 
-function Resource({ title, body }) {
+function Resource({ title, body ,onDelete, onEdit}) {
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
 
@@ -41,11 +41,11 @@ function Resource({ title, body }) {
 
           <MDBox display="flex" alignItems="center" mt={{ xs: 2, sm: 0 }} ml={{ xs: -1.5, sm: 0 }}>
             <MDBox mr={1}>
-              <MDButton variant="text" color="error">
+              <MDButton variant="text" color="error" onClick={onDelete}>
                 <Icon>delete</Icon>&nbsp;delete
               </MDButton>
             </MDBox>
-            <MDButton variant="text" color={darkMode ? "white" : "dark"}>
+            <MDButton onClick={onEdit} variant="text" color={darkMode ? "white" : "dark"}>
               <Icon>edit</Icon>&nbsp;edit
             </MDButton>
           </MDBox>
