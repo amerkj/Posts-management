@@ -9,7 +9,7 @@ const routes = [
     name: "Resources",
     key: "resources",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/resources",
+    route: "/",
     component: <Resources />,
   },
 ];
